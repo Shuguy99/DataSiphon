@@ -1,0 +1,59 @@
+{
+  "start_url": "https://example-shop.ru/catalog?page=1",
+
+  "item": {
+    "container": "div.product-card",
+    "fields": [
+      {
+        "name": "title",
+        "selector": "h2.product-card__title",
+        "transform": "text",
+        "required": true
+      },
+      {
+        "name": "price",
+        "selector": "span.product-card__price",
+        "transform": "price"
+      },
+      {
+        "name": "link",
+        "selector": "h2.product-card__title a",
+        "attribute": "href",
+        "transform": "url"
+      },
+      {
+        "name": "rating",
+        "selector": "span.product-card__rating",
+        "attribute": "content",
+        "transform": "float"
+      }
+    ]
+  },
+
+  "pagination": {
+    "mode": "next",
+    "next_selector": "a.pager__next",
+    "max_pages": 20
+  },
+
+  "output": {
+    "path": "data/products.csv",
+    "encoding": "utf-8-sig",
+    "deduplicate": true,
+    "append": false
+  },
+
+  "user_agents": [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+    "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0"
+  ],
+
+  "delay": { "min": 1.0, "max": 3.0 },
+  "timeout": 15,
+  "retries": 3,
+  "retry_backoff": 1.0,
+  "respect_robots_txt": true,
+  "verify_ssl": true,
+  "stop_on_error": true
+}

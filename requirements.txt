@@ -1,0 +1,4 @@
+requests>=2.31
+beautifulsoup4>=4.12
+# Опционально: ускоряет разбор HTML (без него работает встроенный html.parser)
+lxml>=5.0

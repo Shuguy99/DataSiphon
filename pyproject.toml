@@ -1,0 +1,33 @@
+[project]
+name = "parser"
+version = "1.0.0"
+description = "Универсальный парсер сайтов на requests + BeautifulSoup с экспортом в CSV"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.31", "beautifulsoup4>=4.12"]
+
+[project.optional-dependencies]
+fast = ["lxml>=5.0"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+parser = "parser.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = ["error::DeprecationWarning:parser.*"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+exclude = ["data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.ruff.format]
+quote-style = "double"
